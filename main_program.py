@@ -41,7 +41,15 @@ def storage_analysis(total_file_size_GB: int) -> None:
                 total_corrupted += 1
                 if choice == "n":
                     return
-    print(f"\nProgram completed, with {total_corrupted} corrupted files")
+    print(f"\nProgram completed, with {total_corrupted} corrupted files\n")
+    print("Running a final test")
+
+    final_data = [
+        data_sha256 == work_out_sha_256(x)
+        for x in track(range(math.ceil(total_file_size_GB)))
+    ]
+    print(f"Final run success: {len([x for x in final_data if x is True])}")
+    print(f"Final run failures: {len([x for x in final_data if x is False])}")
 
 
 def main() -> None:
