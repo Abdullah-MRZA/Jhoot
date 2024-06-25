@@ -18,7 +18,7 @@ def storage_analysis(total_file_size_GB: int) -> None:
     # data = "".join(
     #     str(random.randint(0, 9)) for x in track(range(1024**3))
     # )  # make 1 GB of size in memory
-    data = ((string.ascii_letters + string.digits) * 2)[:100] * ((1024**3) // 100)
+    data = int(((string.ascii_letters + string.digits) * 2)[:100] * ((1024**3) / 100))
 
     data_sha256 = work_out_sha_256(data)
     total_corrupted: int = 0
